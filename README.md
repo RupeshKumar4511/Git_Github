@@ -1,5 +1,4 @@
 # Git Commands 
-
 ```bash 
 To check hidden file :
 ls -a  
@@ -16,6 +15,19 @@ To check what is written in the file :
 cat file_name
 
 
+
+```
+
+
+<br>
+<br>
+
+
+# How to set username and password :
+```bash 
+git config --global user.name "abc"
+
+git cofig --global user.password "abc123"
 
 ```
 
@@ -108,6 +120,8 @@ This commands give us all the url that belongs to a folder.
 ```
 # Branch :
 A branch in Git is a lightweight, movable pointer to a commit. It is used to isolate work in a version-controlled project, allowing you to develop features, fix bugs, or experiment without affecting the main codebase.
+A branch is just a name (e.g., main) pointing to a specific commit (node).
+When you make a new commit, the branch pointer moves forward automatically.
 
 <br>
 <br>
@@ -140,11 +154,11 @@ Url from where we have forked a project to our own account is called Upstream ur
 
 2. clone the project to your system folder.
 
-3. Make changes there and add it and then commit it 
+3. Make separate branch to add new features there and then commit it.
 
 4. git remote add upstream "https://github.com/RupeshKumar4511/Git_Github.git" 
 
-Here it can be any url.
+Here it can be any upstream url.
 
 5. git push origin main
 
@@ -160,7 +174,7 @@ A pull request (PR) is a feature in version control systems like Git, used prima
 <br>
 
 <b>
-    Note : One branch is associated with only one pull request so while working on fork of open source project makes separate branch for each features or debugs the bugs and create pull request to main branch of open source project to merge it . Then they sees your code and run some test and give you some suggestion and you may need to made some changes in your code and finally they merge it if your feaature is useful. 
+    Note : One branch is associated with only one pull request so while working on fork of open source project makes separate branch for each features or debugs the bugs and create pull request to main branch of open source project to merge it . Then they sees your code and run some test and give you some suggestion and then you may need to made some changes in your code and finally they merge it if your code feature is useful. 
 </b>
 
 # Important Point :
@@ -169,7 +183,7 @@ then it does not work . Then in this case you need to push it forcefully .
 ```bash 
 git push origin main -f 
 
-Here f means forcefully
+Here f means forcefully.
 
 ```
 
