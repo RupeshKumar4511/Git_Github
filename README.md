@@ -232,25 +232,25 @@ It means merging multiple commits in single commits.
 <br>
 ```bash 
 1. copy the hash of last commit above which you want merge the commits . 
-
+<br>
 2. git rebase -i  "hash of last commit"
 Here i means interactive environment.
+
+<br>
 
 <img src="squash_commits.jpg" alt="squash_commits">
 <br>
 All the commits below "pick d9dd724 1"
 will be squashed to "pick d9dd724"
-
+<br>
 3. Exit out of it.
 Enter Esc and then type ":x" and press enter.
 This will allow you to create a message for new commit.
-
+<br>
 
 4. Add message and exit using step3.
 
 
-
-```
 
 
 # Merge Conflicts :
