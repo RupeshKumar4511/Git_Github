@@ -253,6 +253,10 @@ This will allow you to create a message for new commit.
 ```
 
 
+# Merge Conflicts :
+A merge conflict in Git occurs when Git is unable to automatically merge changes from two branches. This typically happens when the same part of a file has been modified in both branches, and Git cannot decide which changes to keep. Merge conflicts require manual intervention to resolve.
+
+
  
 
 
