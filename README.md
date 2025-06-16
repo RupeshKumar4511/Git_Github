@@ -35,7 +35,8 @@ git cofig --global user.password "abc123"
 <br>
 <br>
 
-```bash 
+```bash
+
 If we want to unstage a file from stagged :
 git restore --staged file_name
 
@@ -51,8 +52,15 @@ Here 'rm' for remove
 
 
 If we want to reset our project to a particular commit :
-git reset --hard "hash_of_that_particular_commit"
 
+git reset --hard "hash_of_that_particular_commit"
+or
+git checkout "hash_of_that_particular_commit"
+
+
+We can check the logs of all commits by using:
+
+git log
 
 ```
 
@@ -60,7 +68,9 @@ git reset --hard "hash_of_that_particular_commit"
 <br>
 
 ```bash 
-If we make a file and write some code in it and we add it but did not commit it and now I want to clean the code and write some another code But when we need the previous code then we can access it for this :
+If we make a file and write some code in it and we add it(to staged area) but did not commit it and
+now I want to clean the code and write some another code. But when we need the previous
+code then we can access it for this we can use  :
 
 git stash 
 This will clean our directory.
@@ -197,6 +207,7 @@ Ist Way : By clicking  on the Fetch Upstream button on the github repos.
 <br>
 <br>
 IInd way : 
+<br>
 ```bash 
 1. First go to your main branch :
 git checkout main 
@@ -230,26 +241,31 @@ It means merging multiple commits in single commits.
 <br>
 <b>How to pick and squash commits :</b>
 <br>
+
 ```bash 
 1. copy the hash of last commit above which you want merge the commits . 
-<br>
+
 2. git rebase -i  "hash of last commit"
 Here i means interactive environment.
-
+```
 <br>
 
 <img src="squash_commits.jpg" alt="squash_commits">
 <br>
+
+```bash
 All the commits below "pick d9dd724 1"
 will be squashed to "pick d9dd724"
-<br>
+
+
 3. Exit out of it.
 Enter Esc and then type ":x" and press enter.
 This will allow you to create a message for new commit.
-<br>
+
+
 
 4. Add message and exit using step3.
-
+```
 
 
 
