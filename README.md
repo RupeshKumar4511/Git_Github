@@ -62,6 +62,10 @@ We can check the logs of all commits by using:
 
 git log
 
+
+To see all the commit graphically use: 
+git log --oneline --all --graph
+
 ```
 
 <br>
@@ -140,22 +144,30 @@ When you make a new commit, the branch pointer moves forward automatically.
 We should never make commit in main branch while contributing to a open source project because code may have some bugs. In this case we should make a separate branch to add each features to a project.
 
 </b>
+<br>
+
+```bash 
+To check whether connected with remote repository then use:
+
+git remote show origin
+```
 
 # HEAD in Git file : 
 Head is just pointing to the last commit made to a current branch.
 
 # Upstream :
-It refers to the repository or branch from which your local repository or branch is pulling changes.
-
+It refers to the repository or branch from which your local repository or branch is pulling or push changes.
+<br>
 ```bash 
 git push -u origin my-branch
-
 
 Here -u sets the my-branch branch to track origin/my-branch.
 ```
 
 # Upstream Url : 
 Url from where we have forked a project to our own account is called Upstream url.
+
+
 
 # How to Work on open source project :
 ```bash 
@@ -175,7 +187,48 @@ Here it can be any upstream url.
 6. make a pull request to main branch of open source project.
 
 ```
+<br>
+<br>
+```bash 
+when other collaborators make changes in any branch of remote git repository which is not available on local repository then to add it into the local repository we can use: 
 
+git fetch  // fetch the latest commit 
+
+//and then merge the code after verifying it : 
+git merge <branch_name>
+
+
+// We can also use 
+git pull  // it fetech and merge operation simultaneously. 
+
+
+
+```
+# Important Point :
+If your local repository does not contains the commit which are on online repository and you want to push some changes to online repo.
+then it does not work. Then in this case you need to push it forcefully .
+<br>
+```bash 
+git push origin main -f 
+
+Here f means forcefully.
+
+```
+<br>
+```bash 
+Other way: we can resolve unrelated-history manually. 
+
+git pull origin main --allow-unrelated-histories
+
+//and then accept or denied the changes and then
+
+git add . 
+
+git commit -m "message"
+
+git push origin main 
+
+```
 
 # Pull Request :
 A pull request (PR) is a feature in version control systems like Git, used primarily in collaborative development workflows. It allows developers to propose changes to a codebase and request that these changes be reviewed and merged into a target branch (usually the main or development branch).
@@ -184,18 +237,11 @@ A pull request (PR) is a feature in version control systems like Git, used prima
 <br>
 
 <b>
-    Note : One branch is associated with only one pull request so while working on fork of open source project makes separate branch for each features or debugs the bugs and create pull request to main branch of open source project to merge it . Then they sees your code and run some test and give you some suggestion and then you may need to made some changes in your code and finally they merge it if your code feature is useful. 
+    Note : One branch is associated with only one pull request so while working on fork of open source project makes separate branch for each features or debugs the bugs and create pull request to main branch of open source project to merge it. Then they sees your code and run some test and give you some suggestion and then you may need to made some changes in your code and finally they merge it if your code feature is useful. 
 </b>
 
-# Important Point :
-If your local repository does not contains the commit which are on online repository and you want to push some changes to online repo.
-then it does not work . Then in this case you need to push it forcefully .
-```bash 
-git push origin main -f 
 
-Here f means forcefully.
 
-```
 
 <br>
 <br>
@@ -203,7 +249,7 @@ Here f means forcefully.
 While working on fork of open source project when your pull request is merged to main branch of upstream(original open source project repo url) but you did not find that changes in your main branch then 
 there are two ways to fetch those changes :
 <br>
-Ist Way : By clicking  on the Fetch Upstream button on the github repos.
+Ist Way : By clicking on the Fetch Upstream button on the github repos.
 <br>
 <br>
 IInd way : 
@@ -215,7 +261,7 @@ git checkout main
 2. fetch all the commits and changes :
 git fetch --all --prune
 
-Here prune means once which are delted will also fetched.
+Here prune means once which are deleted will also fetched.
 
 3. git reset --hard upstream origin/main
 
