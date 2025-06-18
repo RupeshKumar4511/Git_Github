@@ -51,13 +51,6 @@ Here 'rm' for remove
 'f' means Forces the removal of files, even if they are not staged or modified.
 
 
-If we want to reset our project to a particular commit :
-
-git reset --hard "hash_of_that_particular_commit"
-or
-git checkout "hash_of_that_particular_commit"
-
-
 We can check the logs of all commits by using:
 
 git log
@@ -154,6 +147,18 @@ git remote show origin
 
 # HEAD in Git file : 
 Head is just pointing to the last commit made to a current branch.
+<br>
+
+```bash 
+// We can move/detached head to particular commit in local repo: 
+
+git checkout "hash_of_that_particular_commit"
+
+// we can move/detached head to particular branch in local repo: 
+
+git checkout "branch_name"
+
+```
 
 # Upstream :
 It refers to the repository or branch from which your local repository or branch is pulling or push changes.
@@ -168,6 +173,59 @@ Here -u sets the my-branch branch to track origin/my-branch.
 Url from where we have forked a project to our own account is called Upstream url.
 
 
+# How to reset commits in local repo : 
+
+```bash 
+// If we want to reset our project to a particular commit :
+
+git reset --hard "hash_of_that_particular_commit"
+
+// here reset can be 
+
+--soft : It moves HEAD to "hash_of_that_particular_commit" only and Keeps changes in staging area (index) and working directory intact. 
+
+
+--mixed(Bydefault) : It moves HEAD to "hash_of_that_particular_commit" and resets staging area and Leaves working directory unchanged. 
+
+--hard : It moves HEAD to "hash_of_that_particular_commit" and resets staging and working directory or we can say All changes are lost from disk and staging.
+
+
+
+
+// If we want to revert any commit then we need hash of previous commit and 
+// we can access that hash by using ; 
+
+git reflog 
+
+```
+
+# How to revert commit in remote repo : 
+If we have pushed an undesired code to remote repo then we can revert it by using : 
+<br>
+
+```bash 
+git revert "hash_of_that_particular_commit"
+
+// "hash_of_that_particular_commit" will be the hash of that commit which have done by mistake. 
+
+
+// revert : It creates a new commit that undoes the changes made by the specified commit. But history of that commit is preserved. 
+
+
+// once we have revert in local repo we need to push
+// to remote repo. 
+
+
+// we can revert multiple commits 
+
+git revert head~3..head~0 
+
+// it will revert last three commits. 
+
+
+
+
+```
 
 # How to Work on open source project :
 ```bash 
@@ -199,7 +257,7 @@ git merge <branch_name>
 
 
 // We can also use 
-git pull  // it fetech and merge operation simultaneously. 
+git pull  // it fetch and merge operation simultaneously. 
 
 
 
