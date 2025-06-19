@@ -65,21 +65,37 @@ git log --oneline --all --graph
 <br>
 
 ```bash 
-If we make a file and write some code in it and we add it(to staged area) but did not commit it and
-now I want to clean the code and write some another code. But when we need the previous
+If we write some code in a file and we add it(to staged area) but did not commit it and
+now I want to clean that code and write some another code. But when we need the previous
 code then we can access it for this we can use  :
 
+Note : without making commit we cannot checkout to another branch. In this case, we use stash. 
+
+
+
 git stash 
-This will clean our directory.
+This saves both staged and unstaged changes and resets your working directory to the last commit.
+
+git stash apply 
+Reapplies the most recent stash but did not remove it from the stash list.
+
+
+To apply specific stash : 
+git stash apply stash@{1}
+
 
 git stash pop 
-This will put all the previous code into staged area
+Reapplies the most recent stash and removes it from the stash list.
 
 
-If we want to clear that previous code permanently 
+If we want to clear all the uncommit changes in the stash: 
+
 git stash clear
-
 This command completely removes all entries from the stash.
+
+
+To delete a specific stash : 
+git stash drop stash@{0}
 
 
 To check stash list :
@@ -209,7 +225,7 @@ git revert "hash_of_that_particular_commit"
 // "hash_of_that_particular_commit" will be the hash of that commit which have done by mistake. 
 
 
-// revert : It creates a new commit that undoes the changes made by the specified commit. But history of that commit is preserved. 
+// revert : It creates a new commit that undoes the changes made by the specified commit. But history of that commit is preserved.  
 
 
 // once we have revert in local repo we need to push
