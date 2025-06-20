@@ -196,7 +196,7 @@ Url from where we have forked a project to our own account is called Upstream ur
 
 git reset --hard "hash_of_that_particular_commit"
 
-// here reset can be 
+// here reset can be :
 
 --soft : It moves HEAD to "hash_of_that_particular_commit" only and Keeps changes in staging area (index) and working directory intact. 
 
@@ -206,7 +206,8 @@ git reset --hard "hash_of_that_particular_commit"
 --hard : It moves HEAD to "hash_of_that_particular_commit" and resets staging and working directory or we can say All changes are lost from disk and staging.
 
 
-
+git reset --hard head~1
+// move head to previous commit. 
 
 // If we want to revert any commit then we need hash of previous commit and 
 // we can access that hash by using ; 
@@ -242,6 +243,23 @@ git revert head~3..head~0
 
 
 ```
+
+# Cherry picking in git : 
+Cherry-picking in Git means selecting a specific commit from one branch and merge it to another.
+<br>
+```bash 
+
+git cherry-pick <commit-hash>
+This applies the changes introduced by the commit with the given hash to your current branch.
+
+```
+
+# Remove cache of tracking of file/folder by git: 
+git rm --cache <file-name>
+
+git rm --cache <folder-name>
+
+
 
 # How to Work on open source project :
 ```bash 
@@ -311,7 +329,7 @@ A pull request (PR) is a feature in version control systems like Git, used prima
 <br>
 
 <b>
-    Note : One branch is associated with only one pull request so while working on fork of open source project makes separate branch for each features or debugs the bugs and create pull request to main branch of open source project to merge it. Then they sees your code and run some test and give you some suggestion and then you may need to made some changes in your code and finally they merge it if your code feature is useful. 
+    Note : One branch is associated with only one pull request so while working on fork of open source project makes separate branch for each features or debugs the bugs and create pull request to main branch of open source project to merge it. Then they sees your code and run some test and give you some suggestion if needed and then you may need to made some changes in your code and finally they merge it if your code feature is useful. 
 </b>
 
 
