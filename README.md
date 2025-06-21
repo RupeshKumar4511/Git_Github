@@ -229,8 +229,7 @@ git revert "hash_of_that_particular_commit"
 // revert : It creates a new commit that undoes the changes made by the specified commit. But history of that commit is preserved.  
 
 
-// once we have revert in local repo we need to push
-// to remote repo. 
+// once we have revert in local repo we need to push it to remote repo. 
 
 
 // we can revert multiple commits 
@@ -244,6 +243,20 @@ git revert head~3..head~0
 
 ```
 
+# How to revert merge commits : 
+
+```bash
+git revert "hash_of_that_particular_commit" -m 1
+
+// The -m flag stands for "mainline".
+
+// It tells Git which parent of a merge commit should be considered the 
+main line of development.
+
+// This is necessary because merge commits have two parents(branch), and 
+// Git needs to know which direction to revert the changes.
+```
+
 # Cherry picking in git : 
 Cherry-picking in Git means selecting a specific commit from one branch and merge it to another.
 <br>
@@ -251,6 +264,11 @@ Cherry-picking in Git means selecting a specific commit from one branch and merg
 
 git cherry-pick <commit-hash>
 This applies the changes introduced by the commit with the given hash to your current branch.
+
+
+// we can merge multiple commits : 
+git cherry-pick <start-commit>^..<end-commit>
+
 
 ```
 
@@ -261,41 +279,7 @@ git rm --cache <folder-name>
 
 
 
-# How to Work on open source project :
-```bash 
 
-1. Make a fork of that project to your account .
-
-2. clone the project to your system folder.
-
-3. Make separate branch to add new features there and then commit it.
-
-4. git remote add upstream "https://github.com/RupeshKumar4511/Git_Github.git" 
-
-Here it can be any upstream url.
-
-5. git push origin main
-
-6. make a pull request to main branch of open source project.
-
-```
-<br>
-<br>
-```bash 
-when other collaborators make changes in any branch of remote git repository which is not available on local repository then to add it into the local repository we can use: 
-
-git fetch  // fetch the latest commit 
-
-//and then merge the code after verifying it : 
-git merge <branch_name>
-
-
-// We can also use 
-git pull  // it fetch and merge operation simultaneously. 
-
-
-
-```
 # Important Point :
 If your local repository does not contains the commit which are on online repository and you want to push some changes to online repo.
 then it does not work. Then in this case you need to push it forcefully .
@@ -329,49 +313,104 @@ A pull request (PR) is a feature in version control systems like Git, used prima
 <br>
 
 <b>
-    Note : One branch is associated with only one pull request so while working on fork of open source project makes separate branch for each features or debugs the bugs and create pull request to main branch of open source project to merge it. Then they sees your code and run some test and give you some suggestion if needed and then you may need to made some changes in your code and finally they merge it if your code feature is useful. 
+    Note : One branch should be associated with only one pull request so while working on fork of open source project makes separate branch for each features or debugs the bugs and create pull request to main branch of open source project to merge it. Then they sees your code and run some test and give you some suggestion if needed and then you may need to made some changes in your code and finally they merge it if your code feature is useful. 
 </b>
 
 
+# How to Work on open source project :
 
+```bash 
+
+1. Make a fork of that project to your account .
+
+2. clone the project to your system folder.
+
+3. Make separate branch to add new features and then commit it.
+
+4. git remote add upstream https://github.com/<original-owner>/<project-name>.git
+
+5. Pull latest changes from upstream (to keep your fork in sync)
+git pull upstream main
+
+6. git push origin <featured_branch>
+
+7. make a pull request to <featured_branch> or main branch of open source project.
+
+```
+
+<br>
+<br>
+<b>
+    Note : Always create your pull request to the branch where active development happens — not blindly to main. Check the project's CONTRIBUTING.md file.
+
+</b>
 
 <br>
 <br>
 
-While working on fork of open source project when your pull request is merged to main branch of upstream(original open source project repo url) but you did not find that changes in your main branch then 
+```bash 
+when other collaborators make changes in any branch of remote git repository 
+which is not available on local repository then to add it into 
+the local repository we can use: 
+
+git fetch  // fetch the latest commit 
+
+//and then merge the code after verifying it : 
+git merge origin/<branch_name>
+
+
+// We can also use 
+git pull  // it fetch and merge operation simultaneously. 
+
+
+
+```
+
+<br>
+<br>
+
+While working on fork of open source project when your pull request is merged to 
+main branch of upstream(original open source project repo url) but you did not find 
+that changes in your main branch then 
 there are two ways to fetch those changes :
 <br>
 Ist Way : By clicking on the Fetch Upstream button on the github repos.
 <br>
 <br>
 IInd way : 
+
 <br>
+
 ```bash 
 1. First go to your main branch :
 git checkout main 
 
-2. fetch all the commits and changes :
+2. Add upstream (only once, if not already added)
+git remote add upstream https://github.com/<original-owner>/<repo-name>.git
+
+
+3. fetch all the commits and changes :
 git fetch --all --prune
 
-Here prune means once which are deleted will also fetched.
+//Here prune means once which are deleted will also fetched.
 
-3. git reset --hard upstream origin/main
+4. git reset --hard upstream origin/main
 
 This action will:
 Point your branch's HEAD to the same commit as upstream/main.
 Replace your working directory and index with the upstream branch's state.
-
 or 
 
-we can also pull request of upstream main . 
-git pull upstream main 
+// we can also pull request of upstream main : 
+git pull upstream/main 
 
-
-
-4. push your changes to main branch.
+5. push your changes to main branch.
 git push origin main 
 
 ```
+
+
+
 
 # Squash Commits : 
 It means merging multiple commits in single commits.
@@ -388,7 +427,7 @@ Here i means interactive environment.
 ```
 <br>
 
-<img src="squash_commits.jpg" alt="squash_commits">
+<img src="squash-image.jpg" alt="squash_commits">
 <br>
 
 ```bash
